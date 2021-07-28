@@ -20,8 +20,6 @@ const db = firebase.firestore()
 
 export default function App() {
 
-  db.collection('recipes').doc('first').set({'x': 'da'})
-
   return (
     <View style={styles.container}>
       <Text>XD</Text>
