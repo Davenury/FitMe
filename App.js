@@ -1,14 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { getAllRecipes } from './utils/database_client';
+import React from 'react';
 import { createTheme, ThemeProvider, Button } from '@material-ui/core';
+import { NavigationContainer } from '@react-navigation/native';
+import { DarkTheme } from '@react-navigation/native';
+import { RecipesScreen } from './components/recipes/Recipes';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import { ShoppingListEntry } from './components/shopping/ShoppingListEntry';
+
+const Tab = createBottomTabNavigator();
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#2569A1'
-    }
+    },
+    secondary: {
+      main: 'rgba(255, 255, 255, 0.7)'
+    },
+    type: 'dark'
   }
 })
 
@@ -16,20 +26,30 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <Text>XD</Text>
-        <Button variant="contained" color="primary">Text</Button>
-        <StatusBar style="auto" />
-      </View>
+      <NavigationContainer theme={DarkTheme}>
+        <Tab.Navigator
+          screenOptions = {({route}) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let icon;
+
+                if (route.name == "Recipes") 
+                  icon = <ViewListIcon color="secondary" fontSize="large"/>
+                else if (route.name == "Shopping")
+                  icon = <AddShoppingCartIcon color="secondary" fontSize="large"/>
+                return icon
+              }
+          })}
+        >
+          <Tab.Screen 
+            name="Recipes"
+            component={RecipesScreen}
+          />
+          <Tab.Screen 
+            name="Shopping"
+            component={ShoppingListEntry}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
