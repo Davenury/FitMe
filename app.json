@@ -4,7 +4,7 @@
     "slug": "FitMe",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/fit_me_icon.png",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.malahite.fitme"
     },
     "web": {
       "favicon": "./assets/favicon.png"
