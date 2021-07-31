@@ -20,12 +20,12 @@ export const RecipesScreen = () => {
     const getRecipesWithDay = () => {
         const groupped = groupBy(recipes, 'day')
         return Object.entries(groupped)
-            .map(item => (<div key={item[0]}><RecipeDay recipes={item[1]} day={item[0]} /><Divider /></div>))
+            .map(item => (<View key={item[0]}><RecipeDay recipes={item[1]} day={item[0]} /><Divider style={{margin: 4}} /></View>))
     }
 
     return (
-        <View style={{margin: '1em', flex: 1}}>
-            <View style={{marginBottom: "1em"}}>
+        <View style={{margin: 24, flex: 1}}>
+            <View style={{marginBottom: 16}}>
                 <Title theme={theme}>Recipes</Title>
             </View>
             <ScrollView>

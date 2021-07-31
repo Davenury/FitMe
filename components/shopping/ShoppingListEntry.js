@@ -27,8 +27,8 @@ export const ShoppingListEntry = ({ navigation, route }) => {
     }
 
     return (
-        <View style={{margin: '1em', flex: 1}}>
-            <View style={{marginBottom: "1em"}}>
+        <View style={{margin: 24, flex: 1}}>
+            <View style={{marginBottom: 16}}>
                 <Title theme={theme}>Shopping!</Title>
             </View>
             {

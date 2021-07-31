@@ -15,7 +15,7 @@ export const RecipeDay = ({ recipes, day }) => {
     }
 
     return(
-        <View style={{marginLeft: "1em", marginRight: "1em", marginBottom: "1em"}}>
+        <View style={{marginLeft: 8, marginRight: 8, marginBottom: 8}}>
             <Title theme={theme}>
                 {day}
             </Title>

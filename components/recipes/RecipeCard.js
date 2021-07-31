@@ -35,7 +35,7 @@ export const RecipeCard = ({ recipe }) => {
                 ]}
                 visible={visible}
                 theme={theme}
-                style={{marginLeft: "10px", marginRight: "10px"}}
+                style={{marginLeft: 10, marginRight: 10}}
             >
                 {renderContent()}
             </Banner>           

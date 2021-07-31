@@ -38,13 +38,13 @@ export const Compute = ({ recipes, indexes, onBack }) => {
     }
 
     return (
-        <View style={{margin: '1em', flex: 1}}>
+        <View style={{margin: 16, flex: 1}}>
             <ScrollView>
                 <List.Section>
                     {getItems()}
                 </List.Section>
             </ScrollView>
-            <View style={{margin: '1em'}} />
+            <View style={{margin: 16}} />
             <Button color={colors.primary} mode="contained" onPress={onBack}>
                 Back
             </Button>

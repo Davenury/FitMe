@@ -81,7 +81,7 @@ export const Select = ({ recipes, indexes, setIndexes, onComputeClicked }) => {
                 >
                     {getAccorditions('start')}
                 </List.Accordion>
-                <View style={{margin: "1em"}} />
+                <View style={{margin: 24}} />
                 <List.Accordion
                     title={titles.end}
                     theme={theme}
@@ -90,7 +90,7 @@ export const Select = ({ recipes, indexes, setIndexes, onComputeClicked }) => {
                 >
                     {getAccorditions('end')}
                 </List.Accordion>
-                <View style={{margin: "2em"}} />
+                <View style={{margin: 48}} />
             </ScrollView>
             <Button color={theme.colors.primary} mode="contained" onPress={computeRecipes}>
                 Generate!

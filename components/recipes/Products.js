@@ -10,7 +10,7 @@ export const Products = ({ products }) => {
         return <List.Item
             key={item[0]}
             title={item[0]}
-            right={() => <Text style={{marginLeft: "30px"}} theme={theme}>{item[1]}</Text>}
+            right={() => <Text style={{marginLeft: 30}} theme={theme}>{item[1]}</Text>}
         />
     }
 
