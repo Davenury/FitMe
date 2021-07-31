@@ -1,30 +1,44 @@
 import React, {useState} from 'react';
-import { Card, CardContent, Box, Typography, SwipeableDrawer } from '@material-ui/core';
 import { Products } from './Products'
+import { Card, useTheme, Title, Text, Banner } from 'react-native-paper'
+import { View } from 'react-native'
 
 export const RecipeCard = ({ recipe }) => {
 
-    const [open, setOpen] = useState(false)
+
+    const renderContent = () => (
+        <View>
+            <Products products={recipe.products}/>
+        </View>
+    )
+
+    const [visible, setVisible] = useState(false)
+
+    const theme = useTheme()
     
     return (
-        <Box m={1}>
-            <Card variant="outlined" onClick={() => setOpen(true)}>
-                <CardContent>
-                    <Typography variant="h5" color="textPrimary" >{ recipe.name }</Typography>
-                    <div style={{float: "right"}}><Typography variant="h6" color="textSecondary">{ recipe.meal }</Typography></div>
-                </CardContent>
-            </Card>
-            <SwipeableDrawer
-                anchor="bottom"
-                open={open}
-                onClose={() => setOpen(false)}
-                onOpen={() => setOpen(true)}
-                elevation={3}
+        <>
+            <View>
+                <Card mode="outlined" onPress={() => setVisible(!visible)} theme={theme}>
+                    <Card.Content>
+                        <Title theme={theme}>{ recipe.name }</Title>
+                        <View style={{float: "right"}}><Text theme={theme}>{ recipe.meal }</Text></View>
+                    </Card.Content>
+                </Card>
+            </View>
+            <Banner
+                actions = {[
+                    {
+                        label: "Ok",
+                        onPress: () => setVisible(false)
+                    }
+                ]}
+                visible={visible}
+                theme={theme}
+                style={{marginLeft: "10px", marginRight: "10px"}}
             >
-                <Box m={2}>
-                    <Products products={recipe.products}/>
-                </Box>
-            </SwipeableDrawer>
-        </Box>
+                {renderContent()}
+            </Banner>           
+        </>
     )
 }

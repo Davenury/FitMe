@@ -1,25 +1,27 @@
 import React from 'react'
-import {Box, Typography, List, ListItem, Grid} from '@material-ui/core';
+import { View } from 'react-native';
+import { List, Text, useTheme, Title } from 'react-native-paper';
 
 export const Products = ({ products }) => {
 
-    const getProducts = () => {
-        return Object.entries(products)
-            .map(item => (
-            <ListItem key={item[0]}>
-                <Grid container direction="row">
-                    <Grid item xs={8}><Typography>{item[0]}</Typography></Grid>
-                    <Grid item xs={4}><div style={{float: "right"}}><Typography>{item[1]}</Typography></div></Grid>
-                </Grid>
-            </ListItem>))
+    const theme = useTheme()
+
+    const getProducts = (item) => {
+        return <List.Item
+            key={item[0]}
+            title={item[0]}
+            right={() => <Text style={{marginLeft: "30px"}} theme={theme}>{item[1]}</Text>}
+        />
     }
 
     return (
-        <Box>
-            <Typography variant="h6" color="textPrimary">Products</Typography>
-            <List>
-                {getProducts()}
-            </List>
-        </Box>
+        <View>
+            <Title theme={theme}>Products</Title>
+            <List.Section
+                theme={theme}
+            >
+                {Object.entries(products).map(item => getProducts(item))}
+            </List.Section>
+        </View>
     )
 }

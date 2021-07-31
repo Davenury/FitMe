@@ -1,9 +1,12 @@
-import React from 'react';
-import { List, ListItem, Button } from '@material-ui/core';
+import React from 'react';  
 import { ProductListItem } from './ProductListItem'
 import { View, ScrollView } from 'react-native'
+import { List, Button } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 
 export const Compute = ({ recipes, indexes, onBack }) => {
+
+    const { colors } = useTheme()
 
     const iterate = (i, result) => {
         Object.entries(recipes[i].products)
@@ -37,11 +40,12 @@ export const Compute = ({ recipes, indexes, onBack }) => {
     return (
         <View style={{margin: '1em', flex: 1}}>
             <ScrollView>
-                <List>
+                <List.Section>
                     {getItems()}
-                </List>
+                </List.Section>
             </ScrollView>
-            <Button color="primary" variant="contained" onClick={onBack}>
+            <View style={{margin: '1em'}} />
+            <Button color={colors.primary} mode="contained" onPress={onBack}>
                 Back
             </Button>
         </View>

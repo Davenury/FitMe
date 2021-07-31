@@ -1,19 +1,14 @@
-import { Button } from "@material-ui/core"
 import React, { useEffect, useState } from 'react';
-import { Typography, Divider } from "@material-ui/core";
 import { getAllRecipes } from '../../utils/database_client'
 import { RecipeDay } from './RecipeDay'
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
+import { Divider } from 'react-native-elements';
+import { groupBy } from '../../utils/groupBy'
+import { Title, useTheme } from 'react-native-paper'
 
-function groupBy(arr, property) {
-    return arr.reduce((memo, x) => {
-      if (!memo[x[property]]) { memo[x[property]] = []; }
-      memo[x[property]].push(x);
-      return memo;
-    }, {});
-  }
+export const RecipesScreen = () => {
 
-export const RecipesScreen = ({ navigation, route }) => {
+    const theme = useTheme()
 
     const [recipes, setRecipes] = useState([])
 
@@ -30,9 +25,9 @@ export const RecipesScreen = ({ navigation, route }) => {
 
     return (
         <View style={{margin: '1em', flex: 1}}>
-            <div style={{marginBottom: "1em"}}>
-                <Typography variant="h6" color="textPrimary">Recipes</Typography>
-            </div>
+            <View style={{marginBottom: "1em"}}>
+                <Title theme={theme}>Recipes</Title>
+            </View>
             <ScrollView>
                 {getRecipesWithDay()}
             </ScrollView>

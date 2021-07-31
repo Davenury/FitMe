@@ -1,9 +1,12 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Title, useTheme } from 'react-native-paper';
 import { RecipeCard } from './RecipeCard'
 import { sort } from '../../utils/sorter'
+import { View } from 'react-native'
 
 export const RecipeDay = ({ recipes, day }) => {
+
+    const theme = useTheme()
 
     const getRecipes = () => {
         return recipes
@@ -12,11 +15,11 @@ export const RecipeDay = ({ recipes, day }) => {
     }
 
     return(
-        <div style={{marginLeft: "1em", marginRight: "1em"}}>
-            <Typography variant="h6" color="textSecondary">
+        <View style={{marginLeft: "1em", marginRight: "1em", marginBottom: "1em"}}>
+            <Title theme={theme}>
                 {day}
-            </Typography>
+            </Title>
             {getRecipes()}
-        </div>
+        </View>
     )
 }

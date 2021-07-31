@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Checkbox, ListItem, ListItemText, ListItemSecondaryAction, Typography } from '@material-ui/core';
-import { View } from 'react-native'
+import { List, Checkbox } from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 
 export const ProductListItem = ({ name, quantity }) => {
+
+    const theme = useTheme()
 
     const [checked, setChecked] = useState(false)
 
@@ -11,18 +13,17 @@ export const ProductListItem = ({ name, quantity }) => {
     }
 
     return (
-        <ListItem>
-                <ListItemText>
-                    <Typography color="textPrimary">{getLabel()}</Typography>
-                </ListItemText>
-                <ListItemSecondaryAction>
-                    <Checkbox
-                        checked={checked}
-                        onChange={() => setChecked(!checked)}
-                        color="primary"
-                        edge="end"
-                    />
-                </ListItemSecondaryAction>
-        </ListItem>
+        <List.Item
+            title={getLabel()}
+            theme={theme}
+            right={() => (<Checkbox
+                status={checked ? 'checked' : 'unchecked'}
+                onPress={() => {
+                    setChecked(!checked);
+                  }}
+                color={theme.colors.primary}
+                theme={theme}
+            />)}
+        />
     )
 }

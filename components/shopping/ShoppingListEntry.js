@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { getAllRecipes } from '../../utils/database_client'
 import { sortWithDays } from '../../utils/sorter';
 import { Select } from './Select';
-import { Typography } from '@material-ui/core';
 import { View } from 'react-native'
 import { Compute } from './Compute'
+import { Title, useTheme } from 'react-native-paper'
 
 export const ShoppingListEntry = ({ navigation, route }) => {
     
+    const theme = useTheme()
+
     const [recipes, setRecipes] = useState([])
     const [indexes, setIndexes] = useState({ start: 0, end: recipes?.length || 0 })
     const [select, setSelect] = useState(true)
@@ -26,9 +28,9 @@ export const ShoppingListEntry = ({ navigation, route }) => {
 
     return (
         <View style={{margin: '1em', flex: 1}}>
-            <div style={{marginBottom: "1em"}}>
-                <Typography variant="h6" color="textPrimary">Shopping!</Typography>
-            </div>
+            <View style={{marginBottom: "1em"}}>
+                <Title theme={theme}>Shopping!</Title>
+            </View>
             {
                 select ? 
                 <Select recipes={recipes} indexes={indexes} setIndexes={(indexes => setIndexes(indexes))} onComputeClicked={onComputeClicked}/> :
